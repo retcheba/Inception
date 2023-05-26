@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    container_name: NGINX
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
