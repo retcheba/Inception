@@ -7,4 +7,9 @@ up:
 down:
 	@docker-compose -f srcs/docker-compose.yml down
 
-.PHONY: all build down
+clean: down
+	@docker system prune -af
+
+re: clean up
+
+.PHONY: all build down clean re

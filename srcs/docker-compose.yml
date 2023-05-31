@@ -2,15 +2,34 @@ version: '3'
 
 services:
   nginx:
-    image: nginx
     container_name: NGINX
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
       - 443:443
+    volumes:
+      - wp:/var/www/html
     networks:
       - docker-network
+    restart: always
+
+  wordpress:
+    container_name: WORDPRESS
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - docker-network
+    restart: always
+
+volumes:
+  wp:
+    driver: local
 
 networks:
   docker-network:
+    name: docker-network
+    driver: bridge

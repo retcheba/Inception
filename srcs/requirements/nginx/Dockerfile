@@ -13,9 +13,6 @@ COPY tools/key.pem /etc/nginx/key.pem
 RUN rm /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-# Copy the html file
-COPY tools/index.html /usr/share/nginx/html
-
 # Expose the port for access
 EXPOSE 443
 
