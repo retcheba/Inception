@@ -1,8 +1,9 @@
 version: '3'
 
 services:
+
   nginx:
-    container_name: NGINX
+    container_name: nginx
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile
@@ -11,25 +12,24 @@ services:
     volumes:
       - wp:/var/www/html
     networks:
-      - docker-network
+      - net
     restart: always
 
   wordpress:
-    container_name: WORDPRESS
+    container_name: wordpress
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
     volumes:
       - wp:/var/www/html
     networks:
-      - docker-network
+      - net
     restart: always
 
 volumes:
   wp:
-    driver: local
 
 networks:
-  docker-network:
-    name: docker-network
+  net:
+    name: net
     driver: bridge
