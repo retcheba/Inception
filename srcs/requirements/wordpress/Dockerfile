@@ -30,10 +30,10 @@ RUN chmod -R 755 /var/www/*
 RUN mkdir -p /run/php
 
 # Configures PHP-FPM to listen on port 9000
-RUN sed -i 's/listen = .*/listen = 9000/' /etc/php/7.3/fpm/pool.d/www.conf
+RUN sed -i 's/listen = .*/listen = 0.0.0.0:9000/' /etc/php/7.3/fpm/pool.d/www.conf
 
 # Removes files after package installation to reduce the size of the container image
 RUN rm -rf /var/lib/apt/lists/*
 
-# Exécute la commande php-fpm en version 7.3 en arrière plan
+# Run the php-fpm7.3 command in the background
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
