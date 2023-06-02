@@ -25,9 +25,23 @@ services:
     networks:
       - net
     restart: always
+  
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=caca
+    networks:
+      - net
+    restart: always
 
 volumes:
   wp:
+  db:
 
 networks:
   net:
