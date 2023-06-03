@@ -23,8 +23,12 @@ WORKDIR /var/www/html
 # Download WordPress with WP-CLI
 RUN wp core download --allow-root
 
-# Copy the wp-config.php file to config wordpress
-COPY conf/wp-config.php /var/www/html/wp-config.php
+# Config the wp-config.php file to config wordpress
+# RUN sed -i "s/username_here/$MYSQL_USER/g" wp-config-sample.php
+# RUN sed -i "s/password_here/$MYSQL_PASSWORD/g" wp-config-sample.php
+# RUN sed -i "s/localhost/$MYSQL_HOSTNAME/g" wp-config-sample.php
+# RUN sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
+# RUN cp wp-config-sample.php wp-config.php
 
 # Changes working directory properties
 RUN chown -R www-data:www-data /var/www/*
