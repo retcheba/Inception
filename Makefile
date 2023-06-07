@@ -1,5 +1,5 @@
 all:
-	@echo "command lines accepted:\033[1;97m make up && make down\033[0m"
+	@echo "\033[1;97mcommand lines accepted:\n- make up (to start)\n- make down (to stop)\n- make build (to build)\n- make clean (to erase)\033[0m"
 
 build:
 	@docker compose -f srcs/docker-compose.yml build
