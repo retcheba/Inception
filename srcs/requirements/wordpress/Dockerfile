@@ -18,10 +18,10 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 # Configures PHP-FPM to listen on port 9000
 RUN sed -i 's/listen = .*/listen = 9000/' /etc/php/7.3/fpm/pool.d/www.conf
 
-#Create the folder to enable php start
+# Create the folder to enable php start
 RUN mkdir -p /run/php
 
-#Copy the script, give the right to launch it and launch it
+# Copy the script to install Wordpress, give the right to launch it and launch it at program start
 COPY ./tools/create_wordpress.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/create_wordpress.sh
 ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
