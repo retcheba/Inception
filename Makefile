@@ -5,7 +5,7 @@ build:
 	@docker compose -f srcs/docker-compose.yml build
 
 up:
-	@docker compose -f srcs/docker-compose.yml up
+	@docker compose -f srcs/docker-compose.yml up -d
 
 down:
 	@docker compose -f srcs/docker-compose.yml down
@@ -16,6 +16,4 @@ clean: down
 	@docker volume prune -af
 	@docker network prune -f
 
-re: clean build up
-
-.PHONY: all build up down clean re
+.PHONY: all build up down clean
