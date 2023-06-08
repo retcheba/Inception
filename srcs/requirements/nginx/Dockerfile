@@ -15,7 +15,7 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -out /etc/nginx/cert.pem
 RUN rm /etc/nginx/nginx.conf
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
-# nginx config
+# Create the folder to enable nginx start
 RUN mkdir -p /run/nginx
 
 # Expose the port for access
