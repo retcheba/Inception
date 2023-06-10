@@ -21,5 +21,5 @@ RUN mkdir -p /run/nginx
 # Expose the port for access
 EXPOSE 443
 
-# Run the Nginx server
+# Run the Nginx server in the foreground
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]

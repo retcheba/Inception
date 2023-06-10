@@ -12,7 +12,7 @@ RUN apt-get install -y mariadb-client
 # # Create the folder et give the right to enable mysqld start
 RUN mkdir -p /var/run/mysqld/
 RUN chown -R mysql:mysql /var/run/mysqld/
-RUN chmod -R 777 /var/run/mysqld
+RUN chmod -R 777 /var/run/mysqld/
 
 # Copy the script to install Mysql, give the right to launch it and launch it at program start
 COPY ./tools/mariadb.sh /usr/local/bin/

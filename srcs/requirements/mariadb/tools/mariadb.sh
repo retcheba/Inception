@@ -17,22 +17,19 @@ else
 mysql_secure_installation << _EOF_
 
 Y
-root4life
-root4life
+$MYSQL_PASSWORD
+$MYSQL_PASSWORD
 Y
 n
 Y
 Y
 _EOF_
 
-# Create a "root" user with full privileges
+# Create a "root" user with full privileges on all databases
 echo "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; FLUSH PRIVILEGES;" | mysql -uroot
 
 # Create a new database with a user with full privileges on this database
-echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE; GRANT ALL ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; FLUSH PRIVILEGES;" | mysql -u root
-
-# Import the wordpress.sql file into the database
-mysql -uroot -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /usr/local/bin/wordpress.sql
+echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE; GRANT ALL ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_USER_PASSWORD'; FLUSH PRIVILEGES;" | mysql -uroot
 
 fi
 

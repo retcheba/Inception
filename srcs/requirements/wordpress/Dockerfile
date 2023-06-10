@@ -32,5 +32,5 @@ WORKDIR /var/www/html
 # Expose the port for access
 EXPOSE 9000
 
-# Run the php-fpm7.3 command in the background
+# Run the php-fpm7.3 command in the foreground
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
